@@ -1,0 +1,178 @@
+I have to prepare a presentation
+
+Please find the guidelines for the presentation:
+
+1. The presentation (delivery) **MUST BE IN ENGLISH**.
+2. Each member **must prepare their own portion of the presentation**. And each member will get 3\*\* minutes\*\* to present their part.[ Note that each team will consist of 3 members, and they will share the same topic and slide]
+3. You will be evaluated on your **delivery skills** and your \*\*mastery of latex. \*\*So you do not need to focus on an in-depth understanding of your topics. Please ensure that the presentation has a good flow and that the content reflects the different techniques that LaTeX provides (e.g., flowcharts, animations, etc.). The [rubrics](https://docs.google.com/spreadsheets/d/13hVJ5WrcioEIvfQzsFdadwhF6t6n7sJk/edit?usp=sharing\&ouid=105796877117744113535\&rtpof=true\&sd=true) will be used for evaluation. Please go through the rubrics to ensure the presentation addresses all those components. 
+4. There will be **no Q/A session** after the presentation. This is to emphasize that you don't need mastery of the topic given. Just a surface-level idea of what can make your presentation interesting will suffice. 
+5. Just a reminder: you will have to submit a report on this presentation later. Guidelines for this will be shared separately.
+6. Please upload the presentation slide on the lab computer before the start of the lab class. Failure to do this will lead to **a reduction in marks**. 
+
+The topic assigned to my group is : 
+Reflexive Thematic Analysis
+
+Important reminder, the totol presentation will be 9 min long. So the slide length and script should be appropriately sized
+
+LATEX FEATURES THAT MAY IMPRESS THE JUDGES:
+
+HIGH-WOW FEATURES
+1. TikZ diagrams
+   → Create polished diagrams/flowcharts entirely in LaTeX.
+
+2. Beamer overlay animations
+   → Reveal elements progressively as you speak.
+   → Use \only, \uncover, \visible, \onslide, <1->, <2->, etc.
+
+3. Animated TikZ diagrams
+   → Build a process visually step-by-step rather than showing everything at once.
+
+4. Progressive visual transformation
+   → Make one visual evolve through stages instead of switching to separate slides.
+   → Example: raw data → codes → clusters → themes.
+
+5. Recursive / feedback-loop diagrams
+   → Use curved TikZ arrows to show iteration and refinement.
+   → Particularly useful because RTA is recursive rather than a rigid pipeline.
+
+6. Side-by-side animated comparison
+   → Reveal two interpretations/lenses sequentially.
+   → Useful for demonstrating different researcher perspectives.
+
+7. Highlighting + dimming
+   → Highlight the relevant part of a diagram/text while fading everything else.
+
+8. Layered TikZ graphics
+   → Background → structure → arrows → labels → highlights appear in layers.
+
+
+ADVANCED VISUAL TECHNIQUES
+9. Custom TikZ nodes
+   → Rounded boxes, circles, labels, icons, custom shapes.
+
+10. Precise TikZ positioning
+    → Professionally align complex diagrams without manually positioning objects.
+
+11. Transparency
+    → Fade secondary information and emphasize the current concept.
+
+12. Clipping
+    → Reveal only selected regions of a diagram.
+
+13. Custom arrows / paths
+    → Curved arrows, feedback arrows, connectors, directional relationships.
+
+14. Before → after visual transformations
+    → Turn an initial concept into a refined concept through overlays.
+
+15. Zoom / focus effects
+    → Move attention from a large overview into one specific component.
+
+
+FEATURES THAT DEMONSTRATE LATEX MASTERY
+16. Custom Beamer theme
+    → Custom colors, typography, title page, footer/header, spacing.
+
+17. Custom commands
+    → Define reusable commands for recurring visual components.
+
+18. Custom environments
+    → Create your own styled boxes/components.
+
+19. Advanced Beamer overlays
+    → Precise control over what appears on each click.
+
+20. Columns / structured layouts
+    → Clean comparison and multi-part layouts.
+
+21. Custom blocks
+    → Styled blocks, alertblocks, examples, definitions, etc.
+
+
+ACADEMIC LATEX FEATURES
+22. BibLaTeX / BibTeX
+    → Proper academic references and citations.
+
+23. Automatic references
+    → Automatically format authors, years, titles, DOI information, etc.
+
+24. Cross-references
+    → \label + \ref for consistent internal references.
+
+25. Mathematical notation
+    → Use LaTeX's mathematical typesetting for conceptual equations.
+
+26. Professional tables
+    → booktabs for clean academic tables.
+
+
+
+💡 STRATEGY
+Don't try to showcase every LaTeX feature.
+
+Aim for 2–3 genuinely impressive "WOW" moments where:
+    • the animation supports your explanation,
+    • the diagram could naturally be built in LaTeX,
+    • and the technique demonstrates actual LaTeX skill.
+
+Best combination:
+    TikZ + Beamer overlays + progressive animation
+    + recursive diagrams + custom theme
+
+The goal should be:
+    "The LaTeX technique makes the explanation better,"
+not:
+    "We added LaTeX effects just to show them."
+
+Materials:
+
+I have added four central papers related to RTA, I expect you to design the slides and script using these papers
+
+The slides need to have 3 segments
+
+The 3 group members are:
+
+1. Arafat Bin A Sattar Inan, ID: 2305103
+2. Meherab Hossain , ID: 2305108
+3. Dipto Debnath, ID: 2305111
+
+Distribute the slides and script so that the transition between the members feel very smooth
+The transitioning slides should contain the member information
+The starting intro slide should contain all 3
+
+Remember, each member gets 3 mins of time to present, so the script and slides should designed with that in mind
+
+
+Theme preset:
+Theme:
+    Elegant editorial / psychological / conceptual
+
+Background:
+    #F7F4EE  — warm ivory
+
+Primary text:
+    #202124  — near-black
+
+Secondary text:
+    #6B6B67  — muted gray
+
+Accent palette:
+    #6D597A  — muted purple
+    #355070  — deep blue
+    #B56576  — dusty rose
+    #E6A65D  — ochre
+    #84A98C  — sage
+
+Font:
+    Headings → Cormorant Garamond / Libre Baskerville
+    Body     → Source Sans 3
+    Technical → IBM Plex Mono
+
+Visual style:
+    • Editorial magazine aesthetic
+    • Thin borders
+    • Large quotation marks
+    • Elegant diagrams
+    • Lots of whitespace
+    • Research quotes treated like visual objects
+

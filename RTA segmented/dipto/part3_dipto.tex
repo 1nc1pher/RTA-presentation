@@ -1,0 +1,191 @@
+\input{preamble.tex}
+\date{CSE 200 -- Lab Presentation}
+
+\begin{document}
+\setcounter{framenumber}{11} % continues Part I + Part II's 7+4 logical frames
+
+%##############################################################################
+\renewcommand{\currentspeaker}{Dipto Debnath \textperiodcentered\ 2305111}
+
+\memberslide{III}{Decisions, pitfalls, quality}{Dipto Debnath}{2305111}
+  {The method is flexible --- which means every choice has to be declared,
+   and there are ten well-documented ways to get it wrong.}
+
+%----------------------------------------------- Slide: the four continua ----
+\begin{frame}{Four decisions you have to declare}
+\vspace{-0.2em}
+\lede{Reflexive TA is theoretically flexible --- but never atheoretical.
+      Each choice is a position on a continuum, not a box to tick.}
+\vspace{-0.9em}
+\begin{center}
+\begin{tikzpicture}[scale=1,transform shape,
+  slider/.style={draw=mute!45,line width=0.9pt},
+  knob/.style={circle,fill=ochre,draw=ink,line width=0.5pt,inner sep=2.2pt}]
+
+  \foreach \y/\l/\r/\n/\pos/\ov in {
+     1.7/essentialist/constructionist/epistemology/2.6/2,
+     0.7/experiential/critical/orientation/-1.9/3,
+    -0.3/inductive/deductive/coding direction/-2.4/4,
+    -1.3/semantic/latent/level of meaning/0.4/5}
+  {
+    \draw[slider,visible on=<\ov->] (-3.2,\y) -- (3.2,\y);
+    \node[anchor=east,font=\scriptsize\sffamily,text=mute,visible on=<\ov->]
+         at (-3.35,\y) {\l};
+    \node[anchor=west,font=\scriptsize\sffamily,text=mute,visible on=<\ov->]
+         at (3.35,\y) {\r};
+    \node[knob,visible on=<\ov->] at (\pos,\y) {};
+    \node[font=\tiny\sffamily,text=deepblue,anchor=south,visible on=<\ov->]
+         at (0,\y+0.12) {\n};
+  }
+
+  \node[text width=12cm,align=center,font=\footnotesize,text=ink,
+        visible on=<6->] at (0,-2)
+       {The knob almost never sits at an end. Byrne's study was mostly
+        inductive \emph{with} a deductive check, and coded semantically
+        \emph{and} latently --- \hl{and he said so in writing}.};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%-------------------------------------------- Slide: the classic mistakes ----
+\begin{frame}{Ten documented problems --- three that matter most}
+\vspace{-0.5em}
+\begin{center}
+{\scriptsize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm}%
+                 >{\raggedright\arraybackslash}p{4.3cm}%
+                 >{\raggedright\arraybackslash}p{4.1cm}@{}}
+\toprule
+{\color{deepblue}\bfseries The problem} &
+{\color{deepblue}\bfseries What it looks like} &
+{\color{deepblue}\bfseries The fix} \\
+\midrule
+\onslide<2->{Assuming TA is one thing} &
+\onslide<2->{A paper citing four incompatible TA authors at once} &
+\onslide<2->{Name your variant and stick to it} \\[4pt]
+\onslide<3->{Citing without reading} &
+\onslide<3->{``We followed Braun \& Clarke'' --- then a codebook and a Kappa} &
+\onslide<3->{Read past the 2006 paper} \\[4pt]
+\onslide<4->{Topics dressed as themes} &
+\onslide<4->{Themes named \emph{Benefits of\dots}, \emph{Barriers to\dots}} &
+\onslide<4->{Find the shared meaning underneath} \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\vspace{-1.1em}
+\begin{center}
+\begin{tikzpicture}[scale=0.86,transform shape]
+  % before -> after (feature 14): a topic bucket becomes a real theme
+  \node[draw=rose,line width=0.9pt,fill=rose!8,rounded corners=2pt,inner sep=6pt,
+        text width=4.3cm,align=center,font=\scriptsize,visible on=<5->]
+       (t1) at (-3.5,0) {{\color{rose}\bfseries Topic summary}\\[3pt]
+        ``Barriers to talking about stress''};
+  \node[draw=sage,line width=1.1pt,fill=sage!14,rounded corners=2pt,inner sep=6pt,
+        text width=4.9cm,align=center,font=\scriptsize,visible on=<6->]
+       (t2) at (3.5,0) {{\color{sage!55!black}\bfseries Shared-meaning theme}\\[3pt]
+        ``Weight-loss activity as good for every woman''};
+  \draw[->,>=stealth,line width=1.1pt,draw=ochre,visible on=<6->]
+       (t1.east) -- node[above,font=\tiny\sffamily,text=mute]{more analytic work}
+       (t2.west);
+  \node[font=\tiny,text=mute,text width=4.3cm,align=center,visible on=<5->]
+       at (-3.5,-0.98) {a bucket for everything said on a topic};
+  \node[font=\tiny,text=mute,text width=4.9cm,align=center,visible on=<6->]
+       at (3.5,-0.98) {an argument you could disagree with};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%--------------------------------------------------- Slide: what is quality --
+\begin{frame}{So what counts as quality?}
+\vspace{-0.2em}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\vspace{0.3em}
+{\color{sage!55!black}\small\bfseries What quality \emph{is}}
+\begin{itemize}\setlength{\itemsep}{0.1em}\small
+  \item<1-> A named, justified variant of TA.
+  \item<1-> Stated theoretical assumptions --- even for inductive work.
+  \item<1-> Themes with a central organising concept.
+  \item<1-> Extracts that are analysed, not just displayed.
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\vspace{0.3em}
+{\color{rose}\small\bfseries What quality is \emph{not}}
+\begin{itemize}\setlength{\itemsep}{0.1em}\small
+  \item<2-> Inter-rater reliability scores.
+  \item<2-> Consensus between coders.
+  \item<2-> ``Saturation'' borrowed from grounded theory.
+  \item<2-> The absence of researcher influence.
+\end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{0.7em}
+\onslide<3->{\keyidea[plum]{%
+  In reflexive thematic analysis, chasing ``unbiased'' coding is not just unnecessary ---
+  it is \emph{incoherent}. Subjectivity is the instrument. The published
+  toolkit is a \textbf{15-point checklist} (2006) and \textbf{20 critical
+  questions} for reviewers (2020).}}
+\end{frame}
+
+%------------------------------------------------------------- Slide: close --
+\begin{frame}{The takeaway}
+\vspace{1.2em}
+\begin{pullquote}[Braun \& Clarke (2020)]
+a compass and a map
+\end{pullquote}
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}
+  \node[text width=11.5cm,align=center,font=\small,text=ink] {
+    Reflexive thematic analysis gives you a direction of travel, not a
+    destination. The six phases are a loop you walk more than once, the
+    themes are things you build rather than find, and the researcher ---
+    visibly, deliberately, on the record --- is part of the result.};
+  \draw[ochre,line width=1pt] (-1.2,-1.6) -- (1.2,-1.6);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%--------------------------------------------------------- Slide: references --
+\begin{frame}{References}
+\vspace{0.4em}
+{\footnotesize
+\begin{thebibliography}{9}
+\setbeamertemplate{bibliography item}[text]
+\bibitem{bc2006} Braun, V. \& Clarke, V. (2006). Using thematic analysis in
+  psychology. \emph{Qualitative Research in Psychology}, 3(2), 77--101.
+\bibitem{bc2019} Braun, V. \& Clarke, V. (2019). Reflecting on reflexive
+  thematic analysis. \emph{Qualitative Research in Sport, Exercise and
+  Health}, 11(4), 589--597.
+\bibitem{bc2020} Braun, V. \& Clarke, V. (2020). One size fits all? What
+  counts as quality practice in (reflexive) thematic analysis?
+  \emph{Qualitative Research in Psychology}.
+\bibitem{byrne} Byrne, D. (2022). A worked example of Braun and Clarke's
+  approach to reflexive thematic analysis. \emph{Quality \& Quantity},
+  56, 1391--1412.
+\end{thebibliography}}
+\vspace{0.6em}
+\begin{center}{\color{mute}\scriptsize
+ Typeset in \LaTeX\ with Beamer and TikZ.}\end{center}
+\end{frame}
+
+%------------------------------------------------------------- Slide: thanks --
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+  \coordinate (K) at ([xshift=1.6cm,yshift=-3.4cm]current page.north west);
+  \node[anchor=north west,text=deepblue,
+        font=\headingfont\fontsize{32}{36}\selectfont] at (K) {Thank you.};
+  \draw[ochre,line width=1.2pt]
+       ([yshift=-1.35cm]K) -- ([xshift=2.4cm,yshift=-1.35cm]K);
+  \node[anchor=north west,text=mute,font=\footnotesize\sffamily,align=left]
+       at ([yshift=-1.72cm]K)
+       {Arafat Bin A Sattar Inan \textperiodcentered\ 2305103 \quad
+        Meherab Hossain \textperiodcentered\ 2305108 \quad
+        Dipto Debnath \textperiodcentered\ 2305111};
+\end{tikzpicture}
+\end{frame}
+
+\end{document}

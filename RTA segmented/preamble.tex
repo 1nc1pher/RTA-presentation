@@ -1,0 +1,182 @@
+%==============================================================================
+%  REFLEXIVE THEMATIC ANALYSIS  --  CSE 200 Lab Presentation
+%  Arafat Bin A Sattar Inan (2305103) | Meherab Hossain (2305108)
+%  Dipto Debnath (2305111)
+%
+%  COMPILE:  pdflatex rta_presentation.tex   (run twice, for the progress bar)
+%            or xelatex / lualatex for the full editorial font stack
+%==============================================================================
+\documentclass[aspectratio=169,11pt,t]{beamer}
+
+%------------------------------------------------------------------ 0. ENGINE
+\usepackage{iftex}
+
+%============================== CUSTOM BEAMER THEME ===========================
+% (feature 16: custom colours, typography, title page, footer, spacing)
+
+%-- 1. Editorial palette ------------------------------------------------------
+\definecolor{paper}   {HTML}{F3EFE6}   % warm ivory background
+\definecolor{ink}     {HTML}{202124}   % near-black primary text
+\definecolor{mute}    {HTML}{6B6B67}   % muted grey secondary text
+\definecolor{plum}    {HTML}{6D597A}   % muted purple
+\definecolor{deepblue}{HTML}{355070}   % deep blue
+\definecolor{rose}    {HTML}{B56576}   % dusty rose
+\definecolor{ochre}   {HTML}{E6A65D}   % ochre
+\definecolor{sage}    {HTML}{637E69}   % sage
+
+%-- 2. Typography -------------------------------------------------------------
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{charter}                  % Baskerville-like serif for headings
+  \usepackage[scaled=0.90]{helvet}      % humanist sans for body text
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Cormorant Garamond}
+    {\newfontfamily\headingfont{Cormorant Garamond}}
+    {\IfFontExistsTF{Libre Baskerville}
+       {\newfontfamily\headingfont{Libre Baskerville}}
+       {\newfontfamily\headingfont{Latin Modern Roman}}}
+  \IfFontExistsTF{Source Sans 3}
+    {\setsansfont{Source Sans 3}}
+    {\IfFontExistsTF{Source Sans Pro}{\setsansfont{Source Sans Pro}}{}}
+  \IfFontExistsTF{IBM Plex Mono}{\setmonofont{IBM Plex Mono}}{}
+\fi
+\ifPDFTeX\newcommand{\headingfont}{\rmfamily}\fi
+
+\usepackage{microtype}
+\usepackage{array}
+\usepackage{booktabs}                   % feature 26: professional tables
+\usepackage{amsmath}                    % feature 25: conceptual notation
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,arrows,fit,backgrounds,%
+                decorations.pathreplacing,overlay-beamer-styles}
+
+\setbeamercolor{background canvas}{bg=paper}
+\setbeamercolor{normal text}{fg=ink}
+\setbeamercolor{structure}{fg=deepblue}
+\setbeamercolor{frametitle}{fg=deepblue}
+\setbeamercolor{itemize item}{fg=ochre}
+\setbeamercolor{itemize subitem}{fg=mute}
+
+\setbeamerfont{frametitle}{family=\headingfont,size=\LARGE,series=\mdseries}
+\setbeamerfont{title}{family=\headingfont,size=\fontsize{30}{34}\selectfont}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{itemize/enumerate body}{size=\small}
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raisebox{0.12em}{\rule{0.42em}{0.42em}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.18em}{\rule{0.3em}{0.9pt}}}
+\setbeamertemplate{section in toc}{%
+  \leavevmode\color{deepblue}\inserttocsectionnumber.~\inserttocsection\par}
+
+%-- 3. Frame title: thin ochre rule beneath, generous whitespace --------------
+\setbeamertemplate{frametitle}{%
+  \vspace*{0.85em}%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.9cm,rightskip=0.9cm]{frametitle}
+    {\usebeamerfont{frametitle}\insertframetitle}\\[0.18em]
+    {\color{ochre}\rule{2.4cm}{1.1pt}}
+  \end{beamercolorbox}%
+  \vspace*{-0.2em}
+}
+
+%-- 4. Footer: speaker, running title, frame number + progress bar ------------
+\newcommand{\currentspeaker}{}
+% Total LOGICAL frames across the merged deck (Beamer counts one frame
+% per \frame, not per overlay page): Part I=7 + Part II=4 + Part III=7 = 18.
+% Used only to keep the footer progress bar proportional after the three
+% part-PDFs are merged; each part still numbers and compiles independently.
+\newcommand{\decktotalframes}{18}
+\setbeamertemplate{footline}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \pgfmathsetmacro{\progressfrac}{\insertframenumber/\decktotalframes}
+    \fill[mute!30] (0,0.66) rectangle (\paperwidth,0.735);
+    \fill[ochre]   (0,0.66) rectangle (\progressfrac\paperwidth,0.735);
+    \node[anchor=south west,text=mute,font=\tiny] at (0.9cm,0.16)
+         {\textsc{reflexive thematic analysis}};
+    \node[anchor=south,text=mute,font=\tiny] at (0.5\paperwidth,0.16)
+         {\currentspeaker};
+    \node[anchor=south east,text=mute,font=\tiny] at (\paperwidth-0.9cm,0.16)
+         {\insertframenumber};
+  \end{tikzpicture}%
+  \vspace{0.95em}
+}
+
+%============================== CUSTOM COMMANDS ===============================
+% (feature 17: reusable commands for recurring visual components)
+
+\newcommand{\lede}[1]{{\color{mute}\small #1}\par\medskip}
+\newcommand{\term}[1]{{\color{plum}\bfseries #1}}
+\newcommand{\hl}[1]{{\color{rose}\bfseries #1}}
+\newcommand{\src}[1]{\hfill{\color{mute}\scriptsize #1}}
+
+% Big editorial pull-quote with oversized ochre quotation marks
+% (feature 18: custom environment)
+\newenvironment{pullquote}[1][]
+  {\def\pqsource{#1}%
+   \begin{center}\begin{minipage}{0.7\textwidth}
+   \setlength{\leftskip}{1.1cm}%
+   \noindent\hspace*{-1.1cm}%
+   \raisebox{-0.42\height}[0pt][0pt]{%
+     \color{ochre}\headingfont\fontsize{56}{56}\selectfont\textquotedblleft}%
+   \hspace{0.18cm}%
+   \color{ink}\headingfont\fontsize{17}{23}\selectfont\itshape\ignorespaces}
+  {\par\vspace{0.5em}%
+   \normalfont\footnotesize\color{mute}\hfill--- \pqsource
+   \end{minipage}\end{center}}
+
+
+% Thin-bordered "key idea" panel (feature 21: custom blocks)
+\newcommand{\keyidea}[2][deepblue]{%
+  \begin{tikzpicture}
+    \node[draw=#1,line width=0.8pt,rounded corners=1.5pt,
+          inner sep=8pt,text width=0.9\textwidth,align=center,
+          font=\small,fill=#1!5] {#2};
+  \end{tikzpicture}}
+
+% Member transition slide (feature 17 + smooth hand-overs)
+\newcommand{\memberslide}[5]{%
+  \begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \coordinate (O) at ([xshift=1.5cm,yshift=-2.1cm]current page.north west);
+    \node[anchor=north west,text=ochre,opacity=0.32,
+          font=\headingfont\fontsize{95}{95}\selectfont] at (O) {#1};
+    \node[anchor=north west,text=mute,font=\scriptsize\sffamily]
+          at ([xshift=3.6cm,yshift=-0.15cm]O) {PART #1};
+    \node[anchor=north west,text=deepblue,text width=10.5cm,align=left,
+          font=\headingfont\fontsize{25}{29}\selectfont]
+          at ([xshift=3.6cm,yshift=-0.55cm]O) {#2};
+    \draw[ochre,line width=1.4pt]
+          ([xshift=3.65cm,yshift=-2.45cm]O) -- ([xshift=6.05cm,yshift=-2.45cm]O);
+    \node[anchor=north west,text=ink,font=\normalsize\sffamily\bfseries]
+          at ([xshift=3.6cm,yshift=-2.80cm]O) {#3};
+    \node[anchor=north west,text=mute,font=\footnotesize\sffamily]
+          at ([xshift=3.6cm,yshift=-3.40cm]O) {ID: #4};
+    \node[anchor=north west,text=mute,font=\footnotesize\sffamily,
+          text width=10.5cm,align=left]
+          at ([xshift=3.6cm,yshift=-4.15cm]O) {#5};
+  \end{tikzpicture}
+  \end{frame}}
+
+%-- Reusable TikZ styles ------------------------------------------------------
+% (features 9 & 10: custom nodes + precise positioning)
+\tikzset{
+  card/.style={draw=mute!50,line width=0.7pt,rounded corners=2pt,
+               fill=white,inner sep=7pt,text width=3.5cm,align=left,
+               font=\scriptsize},
+  phase/.style={circle,draw=deepblue,line width=0.9pt,fill=paper,
+                minimum size=1.35cm,align=center,font=\scriptsize,text=ink},
+  codebox/.style={draw=sage,line width=0.7pt,fill=sage!12,rounded corners=1.5pt,
+                  inner sep=4pt,font=\scriptsize,align=left,text width=3.15cm},
+  themebox/.style={draw=plum,line width=1pt,fill=plum!10,rounded corners=2pt,
+                   inner sep=6pt,font=\small,align=center,text width=4.1cm},
+  flow/.style={->,>=stealth,line width=0.9pt,draw=mute},
+  loopback/.style={->,>=stealth,line width=0.8pt,draw=rose,dashed,
+                   opacity=0.85,bend right=38},
+  tag/.style={font=\tiny\sffamily,text=mute}
+}
+
+%==============================================================================
+\title{Reflexive Thematic Analysis}
+\subtitle{Braun \& Clarke's approach to making meaning from qualitative data}

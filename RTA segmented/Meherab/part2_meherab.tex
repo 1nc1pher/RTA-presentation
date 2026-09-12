@@ -1,0 +1,181 @@
+\input{preamble.tex}
+\date{CSE 200 -- Lab Presentation}
+
+\begin{document}
+\setcounter{framenumber}{7} % continues Part I's 7 logical frames
+
+%##############################################################################
+\renewcommand{\currentspeaker}{Meherab Hossain \textperiodcentered\ 2305108}
+
+\memberslide{II}{The six-phase process}{Meherab Hossain}{2305108}
+  {If themes are generated rather than found, what exactly is the work?\\
+   Six phases --- they are a loop, not a pipeline.}
+
+%------------------------------------------------ Slide: six phases loop -----
+\begin{frame}{Six phases --- and none of them is a one-way street}
+\vspace{-1.5em}
+\begin{center}
+\begin{tikzpicture}[scale=0.90,transform shape]
+  % ---- six phases arranged on a circle (feature 10: precise positioning)
+  \node[phase,alt=<2>{draw=ochre,line width=1.8pt,fill=ochre!12}{},
+        alt=<2->{opacity=1}{opacity=0.18}] (p1) at (90:2.45)   {\textbf{1}\\familiar-\\isation};
+  \node[phase,alt=<3>{draw=ochre,line width=1.8pt,fill=ochre!12}{},
+        alt=<3->{opacity=1}{opacity=0.18}] (p2) at (30:2.45)   {\textbf{2}\\systematic\\coding};
+  \node[phase,alt=<4>{draw=ochre,line width=1.8pt,fill=ochre!12}{},
+        alt=<4->{opacity=1}{opacity=0.18}] (p3) at (-30:2.45)  {\textbf{3}\\generating\\themes};
+  \node[phase,alt=<5>{draw=ochre,line width=1.8pt,fill=ochre!12}{},
+        alt=<5->{opacity=1}{opacity=0.18}] (p4) at (-90:2.45)  {\textbf{4}\\reviewing\\themes};
+  \node[phase,alt=<6>{draw=ochre,line width=1.8pt,fill=ochre!12}{},
+        alt=<6->{opacity=1}{opacity=0.18}] (p5) at (-150:2.45) {\textbf{5}\\defining \&\\naming};
+  \node[phase,alt=<7->{draw=ochre,line width=1.8pt,fill=ochre!12}{},
+        alt=<7->{opacity=1}{opacity=0.18}] (p6) at (150:2.45)  {\textbf{6}\\writing\\up};
+
+  % ---- forward arcs
+  \draw[flow,visible on=<3->] (p1) to[bend left=18] (p2);
+  \draw[flow,visible on=<4->] (p2) to[bend left=18] (p3);
+  \draw[flow,visible on=<5->] (p3) to[bend left=18] (p4);
+  \draw[flow,visible on=<6->] (p4) to[bend left=18] (p5);
+  \draw[flow,visible on=<7->] (p5) to[bend left=18] (p6);
+
+  % ---- recursive feedback arcs (feature 5 + 13)
+  \draw[loopback,visible on=<8->] (p3) to (p2);
+  \draw[loopback,visible on=<8->] (p4) to (p3);
+  \draw[loopback,visible on=<8->] (p4) to[bend right=25] (p2);
+  \draw[loopback,visible on=<8->] (p5) to (p4);
+  \draw[loopback,visible on=<8->] (p6) to (p5);
+
+  \node[align=center,font=\scriptsize\sffamily,text=mute,visible on=<8->]
+       at (0,0.22) {guidelines,\\not rules};
+  \node[align=center,font=\tiny\sffamily,text=rose,visible on=<8->]
+       at (0,-0.62) {\textsc{recursive}};
+
+  % ---- side commentary panel, changes with the highlighted phase
+  \node[anchor=north west,text width=4.5cm,align=left,font=\scriptsize,
+        text=ink] at (5,1) {
+    \only<1>{Six phases, proposed as a way of \emph{doing} analysis and of
+             \emph{learning} to do it.}%
+    \only<2>{\term{Phase 1.} Read and re-read. Transcribe yourself if you
+             can. Write familiarisation notes. Do not skim.}%
+    \only<3>{\term{Phase 2.} Work through the whole dataset, tagging
+             anything relevant with short, standalone code labels.}%
+    \only<4>{\term{Phase 3.} Cluster codes that share meaning into candidate
+             themes. Each needs a central organising concept.}%
+    \only<5>{\term{Phase 4.} Test candidates twice --- against the coded
+             extracts, then against the whole dataset. Split, merge, or
+             discard.}%
+    \only<6>{\term{Phase 5.} Write the scope of each theme in two sentences.
+             If you cannot, it is not one theme.}%
+    \only<7>{\term{Phase 6.} Writing is analysis. It starts at phase one and
+             never really stops.}%
+    \only<8->{\hl{The arrows go both ways.} Phase four regularly sends you
+             back to re-code. Byrne calls the six phases
+             ``guidelines, rather than rules''.}};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%---------------------------------- Slide: worked example transformation -----
+\begin{frame}{From one sentence of transcript to one theme}
+\vspace{-0.6em}
+\lede{A worked example, after Byrne (2022): interviews with school teachers
+      about promoting student wellbeing.}
+\vspace{-0.6em}
+\begin{center}
+\begin{tikzpicture}[scale=0.88,transform shape]
+
+  %--- stage 1: the data item ------------------------------------------------
+  \node[draw=mute!45,line width=0.7pt,fill=white,rounded corners=2pt,
+        inner sep=7pt,text width=3.0cm,align=left,font=\scriptsize\itshape,
+        alt=<5->{opacity=0.3}{opacity=1}] (data) at (-5.9,0.2)
+       {``The guidelines are on my wall, but I never use that language in
+         class --- it means nothing to a fourteen-year-old.''\\[3pt]
+        \normalfont\tiny\color{mute}illustrative data item};
+  \node[tag,alt=<5->{opacity=0.3}{opacity=1}] at (-5.9,1.7) {\textsc{data item}};
+
+  %--- stage 2: the codes ----------------------------------------------------
+  \node[tag,visible on=<2->,alt=<5->{opacity=0.3}{opacity=1}] at (-1,2.1)
+       {\textsc{codes}};
+  \node[codebox,text width = 3.7cm, align = center, visible on=<2->,alt=<5->{opacity=0.3}{opacity=1}]
+       (k1) at (-1,1.55) {guidelines lack clarity};
+  \node[codebox,text width = 3.7cm, align = center, visible on=<2->,alt=<5->{opacity=0.3}{opacity=1}]
+       (k2) at (-1,0.65) {not relatable for students};
+  \node[codebox,text width = 3.7cm,visible on=<3->,alt=<5->{opacity=0.3}{opacity=1}]
+       (k3) at (-1,-0.25) {indicators never used in practice};
+  \node[codebox,text width = 3.7cm,visible on=<3->,alt=<5->{opacity=0.3}{opacity=1}]
+       (k4) at (-1,-1.15) {teachers rely on common sense};
+   \draw[flow,visible on=<2->] (-4,0.25) -- (-3.2,0.25);
+
+  %--- stage 3: the cluster --------------------------------------------------
+  \draw[decorate,decoration={brace,amplitude=6pt},draw=mute,
+        visible on=<3->] (1.15,1.95) -- (1.15,-1.65);
+  \node[tag,visible on=<3->,text width=1.5cm,align=center] at (2.15,0.15)
+       {clustered by shared meaning};
+
+  %--- stage 4: the theme ----------------------------------------------------
+  \node[themebox,text width = 2cm,visible on=<4->,
+        alt=<5->{draw=plum,line width=1.6pt,fill=plum!18}{}] (th) at (5.15,0.25)
+       {\textbf{Incompletely\\ theorised agreements}};
+  \node[text width=4.1cm,align=center,font=\tiny,text=mute,visible on=<4->]
+       at (5.15,-1.1)
+       {\textsc{central organising concept}\\[2pt]
+        teachers act on student wellbeing without any shared theory of what
+        wellbeing is};
+  \node[tag,visible on=<4->] at (5.15,1.3) {\textsc{theme}};
+  \draw[flow,visible on=<4->] (2.95,0.25) -- (3.7,0.25);
+
+  %--- closing line ----------------------------------------------------------
+  \node[text width=12.4cm,align=center,font=\footnotesize,text=ink,
+        visible on=<5->] at (0,-2.45)
+       {Notice what happened: the theme name is \hl{not a summary of the
+        topic}. It is an interpretation the researcher had to build.};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%----------------------------------------- Slide: code vs theme + revision ---
+\begin{frame}{A code is one facet. A theme has many.}
+\vspace{-0.3em}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.9,transform shape]
+  \node[tag] at (-2.2,1.9) {\textsc{code}};
+  \node[circle,draw=sage,line width=0.9pt,fill=sage!15,minimum size=1.1cm,
+        font=\tiny,align=center] at (-2.2,0.9) {one\\facet};
+  \node[tag,visible on=<2->] at (1.8,2.5) {\textsc{theme}};
+  \node[circle,draw=plum,line width=1.1pt,fill=plum!14,minimum size=1.35cm,
+        font=\tiny,align=center,visible on=<2->] (T) at (1.8,0.9)
+       {central\\concept};
+  \foreach \a in {18,90,162,234,306}
+    \draw[sage,line width=0.7pt,visible on=<2->]
+      (T) -- ++(\a:1.15) node[circle,fill=sage!30,draw=sage,inner sep=1.5pt]{};
+  \draw[->,>=stealth,draw=ochre,line width=1pt,visible on=<2->]
+       (-1.45,0.9) -- (0.65,0.9);
+\end{tikzpicture}
+\end{center}
+\vspace{0.2em}
+{\footnotesize A theme drawn from a single code is usually still a code.}
+\end{column}
+\begin{column}{0.42\textwidth}
+\vspace{0.4em}
+{\small Phase four is where the real work shows.}\\[0.5em]
+\begin{tikzpicture}
+\node[draw=mute!40,line width=0.7pt,rounded corners=2pt,inner sep=7pt,
+      text width=5.4cm,font=\scriptsize,align=left,fill=white,
+      visible on=<3->]{
+  In Byrne's study the initial map had \textbf{4 candidate themes}.\\[4pt]
+  One of them was too dense to defend, so it was broken apart and
+  re-interpreted.\\[4pt]
+  The final map had \textbf{5 themes} --- and three of them did not exist
+  before the review.};
+\end{tikzpicture}
+\vspace{0.5em}
+
+\onslide<4->{\centering{\color{rose}\footnotesize
+ Revision is not a sign of failure. It is the method working.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\end{document}

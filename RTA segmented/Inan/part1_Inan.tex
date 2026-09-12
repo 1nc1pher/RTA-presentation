@@ -1,0 +1,270 @@
+\input{preamble.tex}
+\date{CSE 200 -- Lab Presentation}
+
+\begin{document}
+
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+  % layered construction: border -> rule -> title -> names (feature 8)
+
+% Outer solid border
+\draw[deepblue, line width=1pt]
+  ([xshift=0.75cm,yshift=-0.75cm]current page.north west) rectangle
+  ([xshift=-0.75cm,yshift=0.75cm]current page.south east);
+% Inner segmented sub-border
+\draw[mute!80, line width=0.6pt] 
+  ([xshift=0.85cm,yshift=-0.85cm]current page.north west) rectangle
+  ([xshift=-0.85cm,yshift=0.85cm]current page.south east);
+
+  \coordinate (T) at ([xshift=1.35cm,yshift=-1.95cm]current page.north west);
+
+  \node[anchor=north west,text=mute,font=\scriptsize\sffamily] at (T)
+       {A QUALITATIVE METHOD IN SIX PHASES};
+  \draw[ochre,line width=1.2pt]
+       ([yshift=-0.42cm]T) -- ([xshift=2.6cm,yshift=-0.42cm]T);
+  \node[anchor=north west,text=deepblue,
+        font=\headingfont\fontsize{30}{34}\selectfont]
+       at ([yshift=-0.72cm]T) {Reflexive Thematic Analysis};
+  \node[anchor=north west,text=ink,font=\small\sffamily,text width=11.4cm,
+        align=left] at ([yshift=-2.05cm]T)
+       {How researchers turn messy qualitative data into patterns of shared
+        meaning --- and why the researcher is part of the instrument.};
+
+  \node[anchor=north west,text=mute,font=\scriptsize\sffamily]
+       at ([yshift=-3.55cm]T) {PRESENTED BY};
+  \node[anchor=north west,text=ink,font=\footnotesize\sffamily,align=left]
+       at ([yshift=-3.95cm]T)
+       {\textbf{Arafat Bin A Sattar Inan}\\[1pt]{\color{mute}2305103}};
+  \node[anchor=north west,text=ink,font=\footnotesize\sffamily,align=left]
+       at ([xshift=5.4cm,yshift=-3.95cm]T)
+       {\textbf{Meherab Hossain}\\[1pt]{\color{mute}2305108}};
+  \node[anchor=north west,text=ink,font=\footnotesize\sffamily,align=left]
+       at ([xshift=10.7cm,yshift=-3.95cm]T)
+       {\textbf{Dipto Debnath}\\[1pt]{\color{mute}2305111}};
+\end{tikzpicture}
+\end{frame}
+
+%================================ ROADMAP ====================================
+\begin{frame}{What we will cover}
+\vspace{0.4em}
+\lede{Three parts, one continuous argument.}
+
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.315\textwidth}
+  \begin{tikzpicture}
+    \node[card,text width=3.5cm,draw=deepblue,line width=1pt] {
+      {\color{deepblue}\bfseries 01 \ Positioning}\\[3pt]
+      What TA is, the three families of TA, and what makes one of them
+      \emph{reflexive}.\\[5pt]
+      {\color{mute}Arafat Bin A Sattar Inan}};
+  \end{tikzpicture}
+\end{column}
+\begin{column}{0.315\textwidth}
+  \begin{tikzpicture}
+    \node[card,text width=3.5cm,draw=sage,line width=1pt] {
+      {\color{sage}\bfseries 02 \ Process}\\[3pt]
+      The six recursive phases, and a worked example from data extract to
+      finished theme.\\[5pt]
+      {\color{mute}Meherab Hossain}};
+  \end{tikzpicture}
+\end{column}
+\begin{column}{0.315\textwidth}
+  \begin{tikzpicture}
+    \node[card,text width=3.5cm,draw=rose,line width=1pt] {
+      {\color{rose}\bfseries 03 \ Practice}\\[3pt]
+      The design decisions you must justify, and
+      what counts as quality.\\[5pt]
+      {\color{mute}Dipto Debnath}};
+  \end{tikzpicture}
+\end{column}
+\end{columns}
+
+\vspace{1.1em}
+\centering
+{\color{mute}\footnotesize Sources: Braun \& Clarke (2006, 2019, 2020);
+ Byrne (2022)}
+\end{frame}
+
+%##############################################################################
+%  PART 1 -- ARAFAT BIN A SATTAR INAN
+%##############################################################################
+\renewcommand{\currentspeaker}{Arafat Bin A Sattar Inan \textperiodcentered\ 2305103}
+
+\memberslide{I}{Positioning the method}{Arafat Bin A Sattar Inan}{2305103}
+  {What thematic analysis is, the three families it splits into, and why
+   Braun and Clarke renamed theirs \emph{"reflexive"}.}
+
+%-------------------------------------------------- Slide: what is TA --------
+\begin{frame}{A method for finding patterns of meaning}
+\vspace{0.1em}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.56\textwidth}
+  \begin{itemize}\setlength{\itemsep}{0.2em}
+    \item<1-> Thematic analysis identifies, analyses and reports
+          \term{themes} --- patterns of meaning --- across a qualitative
+          dataset.
+    \item<2-> Braun \& Clarke described it in 2006 as
+          \hl{``poorly demarcated, rarely acknowledged''} yet used everywhere.
+    \item<3-> That paper became one of the most cited methods papers of the
+          last twenty years.
+    \item<4-> And then the problem started: thousands of studies
+          \emph{cited} it while \emph{doing} something else entirely.
+  \end{itemize}
+\end{column}
+\begin{column}{0.34\textwidth}
+  \vspace{0.2em}
+\begin{tikzpicture}[scale=0.95,transform shape]
+  \node[align=center,font=\scriptsize\sffamily,text=mute] at (0.275,2.55) {\textsc{data corpus}};
+  \foreach \x in {-1.6,-0.8,0,0.8,1.6}
+    \draw[mute!45,line width=0.7pt] (\x,1.35) rectangle ++(0.55,0.85);
+
+  \draw[flow,visible on=<2->] (0.275,1.35) -- (0.275,0.50);
+  \draw[flow,visible on=<3->] (0.275,0.00) -- (0.275,-0.85);
+
+  \node[visible on=<2->,align=center,font=\scriptsize\sffamily,text=mute,fill=paper,inner ysep=2pt,inner xsep=4pt]
+       at (0.275,0.925) {\textsc{codes}};
+  \foreach \x in {-1.6,-0.8,0,0.8,1.6}
+    \fill[sage,opacity=0.55,visible on=<2->] (\x,0.0) rectangle ++(0.55,0.5);
+
+  \node[visible on=<3->,align=center,font=\scriptsize\sffamily,text=mute,fill=paper,inner ysep=2pt,inner xsep=4pt]
+       at (0.275,-0.425) {\textsc{themes}};
+  \fill[plum,opacity=0.6,visible on=<3->] (-1.6,-1.60) rectangle ++(1.35,0.75);
+  \fill[plum,opacity=0.6,visible on=<3->] (0.25,-1.60) rectangle ++(1.9,0.75);
+
+  \node[visible on=<4->,text=rose,font=\scriptsize\sffamily,align=center]
+       at (0.275,-2.25) {but \emph{how} you get there\\is the whole argument};
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------- Slide: three families of TA ----
+\begin{frame}{Three families of thematic analysis}
+\vspace{-0.2em}
+\lede{Same name, different philosophies. Braun, Clarke, Terry \& Hayfield
+      (2019) cluster them on a spectrum.}
+\vspace{-1.4em}
+\begin{center}
+\begin{tikzpicture}[scale=1,transform shape]
+  % spectrum axis
+  \draw[->,>=stealth,line width=1pt,draw=mute!60] (-5.6,2.35) -- (5.6,2.35);
+  \node[tag,anchor=west] at (-5.6,2.72) {small q \textperiodcentered\ positivist};
+  \node[tag,anchor=east] at (5.6,2.72)  {Big Q \textperiodcentered\ fully qualitative};
+
+  % --- card 1: coding reliability -----------------------------------------
+  \node[card,text width=3.15cm,anchor=north,
+        alt=<2>{draw=deepblue,line width=1.4pt}{draw=mute!40},
+        alt=<2>{opacity=1}{opacity=0.45}] (c1) at (-3.75,1.95) {
+    {\color{deepblue}\bfseries Coding reliability}\\[3pt]
+    Fixed codebook, several coders, inter-rater reliability.
+    Themes decided \emph{before} coding.\\[3pt]
+    {\color{mute}Boyatzis (1998)}};
+
+  % --- card 2: codebook ----------------------------------------------------
+  \node[card,text width=3.15cm,anchor=north,
+        alt=<3>{draw=sage,line width=1.4pt}{draw=mute!40},
+        alt=<3>{opacity=1}{opacity=0.45}] (c2) at (0,1.95) {
+    {\color{sage}\bfseries Codebook}\\[3pt]
+    Structured template, but qualitative values. Pragmatic, team-based,
+    deadline-driven.\\[3pt]
+    {\color{mute}Framework; template analysis}};
+
+  % --- card 3: reflexive ---------------------------------------------------
+  \node[card,text width=3.15cm,anchor=north,
+        alt=<4->{draw=plum,line width=1.4pt}{draw=mute!40},
+        alt=<4->{opacity=1}{opacity=0.45}] (c3) at (3.75,1.95) {
+    {\color{plum}\bfseries Reflexive}\\[3pt]
+    No codebook. Coding is organic. Subjectivity is a \emph{resource},
+    not a threat.\\[3pt]
+    {\color{mute}Braun \& Clarke (2019)}};
+
+  \draw[mute!50,line width=0.6pt,visible on=<2>] (-3.75,2.3) -- (-3.75,1.95);
+  \draw[mute!50,line width=0.6pt,visible on=<3>] (0,2.3) -- (0,1.95);
+  \draw[mute!50,line width=0.6pt,visible on=<4->] (3.75,2.3) -- (3.75,1.95);
+
+  \node[visible on=<5->,text width=11.2cm,align=center,font=\footnotesize,
+        text=ink,anchor=north] at (0,-1.1)
+       {The mistake is not choosing one. The mistake is
+        \hl{blending them without noticing} --- citing reflexive TA and then
+        reporting a Cohen's Kappa.};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%---------------------------------------- Slide: the reflexive intersection --
+\begin{frame}{Why ``reflexive''? The researcher is in the analysis}
+\vspace{-0.1em}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.47\textwidth}
+\vspace{-0.7em}
+\begin{center}
+\begin{tikzpicture}[scale=0.92,transform shape]
+  % three overlapping lenses, revealed in layers (features 8 & 11)
+  \fill[deepblue,opacity=0.30,visible on=<1->] (-0.95, 0.55) circle (1.5);
+  \fill[sage,  opacity=0.30,visible on=<2->] ( 0.95, 0.55) circle (1.5);
+  \fill[rose,   opacity=0.30,visible on=<3->] ( 0.00,-0.95) circle (1.5);
+  \node[text=deepblue,font=\scriptsize\sffamily\bfseries,visible on=<1->]
+       at (-1.85,2.35) {The dataset};
+  \node[text=sage!75!black,font=\scriptsize\sffamily\bfseries,visible on=<2->]
+       at (1.65,2.35) {Theory};
+  \node[text=rose,font=\scriptsize\sffamily\bfseries,visible on=<3->]
+       at (0,-2.75) {The researcher};
+  \node[circle,fill=paper,draw=ink,line width=0.9pt,inner sep=2.5pt,
+        font=\tiny\sffamily,visible on=<4->] at (0,0.05) {analysis};
+\end{tikzpicture}
+\end{center}
+\end{column}
+\begin{column}{0.51\textwidth}
+\vspace{0.9em}
+\begin{itemize}\setlength{\itemsep}{0.55em}
+  \item<1-> The analysis sits at the intersection of the \term{data}, the
+        \term{theoretical assumptions} brought to it, and the
+        \term{analytic skills} of the researcher.
+  \item<4-> No two researchers meet that intersection identically --- so
+        \hl{reproducibility is not the goal}.
+\end{itemize}
+\vspace{0.6em}
+\onslide<5->{%
+\[
+  \mathcal{A}\;=\;f\!\left(\mathcal{D}\,\cap\,\mathcal{T}\,\cap\,\mathcal{R}\right)
+\]
+\vspace{-1.2em}
+\begin{center}{\color{mute}\scriptsize
+ Change $\mathcal{R}$ and the analysis legitimately changes.}\end{center}}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------- Slide: themes do not emerge ----
+\begin{frame}{Themes are an output, never an input}
+\vspace{0.9em}
+\begin{pullquote}[Braun \& Clarke (2019)]
+themes do not passively emerge
+\end{pullquote}
+
+\vspace{0.6em}
+\begin{center}
+\begin{tikzpicture}
+  % before -> after transformation (feature 14)
+  \node[card,text width=4.1cm,draw=rose,fill=rose!8,align=center]
+       (bad) at (-3.4,0) {
+       {\color{rose}\bfseries The passive story}\\[3pt]
+       Themes lie in the data. The researcher finds and retrieves them.};
+  \node[card,text width=4.1cm,align=center,
+        alt=<2->{draw=sage,fill=sage!12}{draw=mute!25,fill=white},
+        alt=<2->{opacity=1}{opacity=0.25}]
+       (good) at (3.4,0) {
+       {\color{sage!60!black}\bfseries The reflexive story}\\[3pt]
+       Themes are generated --- built by the researcher out of codes.};
+  \draw[->,>=stealth,line width=1.1pt,draw=ochre,visible on=<2->]
+       (bad.east) -- node[above,font=\tiny\sffamily,text=mute]{generating} (good.west);
+  \node[text=mute,font=\scriptsize,text width=11cm,align=center,visible on=<3->]
+       at (0,-1.85)
+       {Braun \& Clarke even renamed phase three --- from \emph{searching for}
+        themes to \emph{generating} themes --- to kill the metaphor.};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\end{document}
